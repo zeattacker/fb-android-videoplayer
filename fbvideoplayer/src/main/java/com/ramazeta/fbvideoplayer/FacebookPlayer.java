@@ -30,6 +30,7 @@ public class FacebookPlayer extends WebView {
     private boolean AUTO_PLAY = false;
     private boolean SHOW_TEXT = false;
     private boolean SHOW_CAPTIONS = false;
+    private FacebookListener fbListener;
 
     public FacebookPlayer(Context context) {
         super(context);
@@ -37,6 +38,14 @@ public class FacebookPlayer extends WebView {
 
     public FacebookPlayer(Context context, AttributeSet attrs) {
         super(context, attrs);
+    }
+
+    public void initialize(String app_id,String videoUrl,FacebookListener listener){
+        if(listener != null){
+            this.fbListener = listener;
+        }
+
+        initialize(app_id, videoUrl);
     }
 
     public void initialize(String app_id,String videoUrl){
@@ -139,32 +148,53 @@ public class FacebookPlayer extends WebView {
         @JavascriptInterface
         public void onStartBuffer(String arg){
             Log.d("FBPlayer", "On Start Buffer : " + arg);
+            fbListener.onStartBuffer();
         }
 
         @JavascriptInterface
         public void onFinishBuffering(String arg){
             Log.d("FBPlayer", "On Finish Buffer : " + arg);
+            fbListener.onFinishBuffering();
         }
 
         @JavascriptInterface
         public void onStartPlaying(String arg){
             Log.d("FBPlayer", "On Start Playing : " + arg);
+            fbListener.onStartPlaying();
         }
 
         @JavascriptInterface
         public void onFinishPlaying(String arg){
             Log.d("FBPlayer", "On Finish Playing : " + arg);
+            fbListener.onFinishBuffering();
         }
 
         @JavascriptInterface
         public void onPaused(String arg){
             Log.d("FBPlayer", "On Paused : " + arg);
+            fbListener.onPaused();
         }
 
         @JavascriptInterface
         public void onError(String arg){
             Log.d("FBPlayer", "On Error : " + arg);
+            fbListener.onError();
         }
+    }
+
+    public interface FacebookListener {
+        void onStartBuffer();
+
+        void onFinishBuffering();
+
+        void onStartPlaying();
+
+        void onFinishPlaying();
+
+        void onPaused();
+
+        void onError();
+
     }
 
     private static Field sConfigCallback;
