@@ -8,7 +8,7 @@ ext {
     bintrayRepo = 'maven'
     bintrayName = 'fb-android-videoplayer'
 
-    publishedGroupId = 'com.ramazeta.library'
+    publishedGroupId = 'com.ramazeta'
     libraryName = 'FB Android Video Player'
     artifact = 'fb-android-videoplayer'
 
@@ -17,7 +17,7 @@ ext {
     siteUrl = 'https://github.com/zeattacker/fb-android-videoplayer'
     gitUrl = 'https://github.com/nuuneoi/fb-android-videoplayer.git'
 
-    libraryVersion = '0.0.1'
+    libraryVersion = '0.0.2'
 
     developerId = 'zeattacker'
     developerName = 'Rama Zeta'

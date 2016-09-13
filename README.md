@@ -2,6 +2,9 @@ Facebook Embedded Videos Android Player
 =======================================
 An Android WebView Helper to plays videos from Facebook embedded
 
+Resources : 
+[https://developers.facebook.com/docs/plugins/embedded-video-player/api](https://developers.facebook.com/docs/plugins/embedded-video-player/api)
+
 Screenshot
 ========
 
@@ -20,7 +23,7 @@ Gradle:
 }
 
 dependencies {
-  compile 'com.ramazeta.library:fb-android-videoplayer:0.0.1'
+  compile 'com.ramazeta:fb-android-videoplayer:0.0.2'
 }
 ```
 
@@ -28,9 +31,9 @@ Maven:
 
 ```xml
 <dependency>
-  <groupId>com.ramazeta.library</groupId>
+  <groupId>com.ramazeta</groupId>
   <artifactId>fb-android-videoplayer</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.2</version>
   <type>pom</type>
 </dependency>
 ```
