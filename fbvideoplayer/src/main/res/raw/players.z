@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+        html, body {
+        height:100%;
+        width:100%;
+        margin: 0;
+        padding: 0;
+        background:[BG_COLOR];
+        overflow:hidden;
+        position:relative;
+        }
+    </style>
+    <title>Your Website Title</title>
+</head>
+<body>
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>
+      var fb_player;
+         window.fbAsyncInit = function() {
+           FB.init({
+             appId      : '{app_id}',
+             xfbml      : true,
+             version    : 'v2.5'
+           });
+
+           // Get Embedded Video Player API Instance
+           FB.Event.subscribe('xfbml.ready', function(msg) {
+             if (msg.type === 'video') {
+               fb_player = msg.instance;
+               fb_player.subscribe("startedPlaying", function(e){
+		window.FacebookInterface.onStartPlaying(e);
+	});
+
+	fb_player.subscribe("startedBuffering", function(e){
+		window.FacebookInterface.onStartBuffering(e);
+	});
+
+	fb_player.subscribe("paused", function(e){
+		window.FacebookInterface.onPaused(e);
+	});
+
+	fb_player.subscribe("error", function(e){
+		window.FacebookInterface.onError(e);
+	});
+
+	fb_player.subscribe("finishedPlaying", function(e){
+		window.FacebookInterface.onFinishPlaying(e);
+	});
+
+	fb_player.subscribe("finishedBuffering", function(e){
+		window.FacebookInterface.onFinishBuffering(e);
+	});
+             }
+           });
+         };
+
+	function pauseVideo(){
+		fb_player.pause();
+	}
+
+	function playVideo(){
+		fb_player.play();
+	}
+
+	function muteVideo(){
+		fb_player.mute();
+	}
+
+	function unMuteVideo(){
+		fb_player.unmute();
+	}
+
+	function setVolumeVideo(vol){
+		fb_player.setVolume(vol);
+	}
+
+	function seekVideo(sec){
+		fb_player.seek(sec);
+	}
+
+	function getDuration(){
+		fb_player.getDuration();
+	}
+
+	function getVolume(){
+		fb_player.getVolume();
+	}
+
+	function getCurrentPosition(){
+		fb_player.getCurrentPosition();
+	}
+
+	function isMuted(){
+		fb_player.isMuted();
+	}
+
+
+         (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "http://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'));
+      </script>
+<!-- Your embedded video player code -->
+<div
+    class="fb-video"
+    data-href="{video_url}"
+    style="width:100%;height:100%;"
+    data-allowfullscreen="true"
+    data-autoplay="{auto_play}"
+    data-show-text="{show_text}"
+    data-show-captions="{show_captions}"></div>
+</body>
+</html>
