@@ -5,7 +5,7 @@ An Android WebView Helper to plays videos from Facebook embedded
 Screenshot
 ========
 
-![](ss.png)
+![](ss.jpg)
 
 How to use
 ----------
@@ -36,8 +36,8 @@ Maven:
 ```
 
 
-How to user FB Video Player
-----------------------
+How to use FB Video Player
+--------------------------
 Detail of usage : [MainActivity.java][1].
 
 Example :
